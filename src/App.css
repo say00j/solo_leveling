@@ -1,0 +1,13 @@
+#main{
+  background: url("../src/assets/wallpaperflare.com_wallpaper.jpg")no-repeat fixed;
+  background-size:cover;
+  width:100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+@media (max-width: 400px) {
+  #main{
+  background: url("../src/assets/solo_leveling.jpg")no-repeat fixed;
+  background-size: 100%;
+  }
+}
