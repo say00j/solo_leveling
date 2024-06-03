@@ -85,7 +85,7 @@
   transform: translateY(1px);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .progress-bar {
     width:150px;
     height: 20px; /* Adjust height as needed */
