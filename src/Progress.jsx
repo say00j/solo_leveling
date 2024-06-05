@@ -1,20 +1,32 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Progress.css";
 
 const Progress = () => {
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString()
+  );
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   const [progressValue, setProgressValue] = useState(
-    parseInt(localStorage.getItem("progressValue"))
+    parseInt(localStorage.getItem("progressValue")) || 0
   );
   const [progressValue2, setProgressValue2] = useState(
-    parseInt(localStorage.getItem("progressValue2"))
+    parseInt(localStorage.getItem("progressValue2")) || 0
   );
   const [progressValue3, setProgressValue3] = useState(
-    parseInt(localStorage.getItem("progressValue3"))
+    parseInt(localStorage.getItem("progressValue3")) || 0
   );
   const [progressValue4, setProgressValue4] = useState(
-    parseInt(localStorage.getItem("progressValue4"))
+    parseInt(localStorage.getItem("progressValue4")) || 0
   );
+
   let incrementCount = 1;
   let level = parseInt(
     (progressValue + progressValue2 + progressValue3 + progressValue4) / 4
@@ -139,6 +151,10 @@ const Progress = () => {
         <div id="level_container">
           <p id="level">{level}</p>
           <p id="level_label">Level</p>
+          <div id="time_container">
+            <p id="time">{currentTime}</p>
+            <p id="time_label">Time</p>
+          </div>
         </div>
       </div>
     </>
