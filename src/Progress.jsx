@@ -47,39 +47,44 @@ const Progress = () => {
 
   let incrementCount = 1;
   let level = parseInt(
-    (progressValue + progressValue2 + progressValue3 + progressValue4) / 4
+    (progressValue +
+      progressValue2 +
+      progressValue3 +
+      progressValue4 +
+      progressValue5) /
+      5
   );
   function handleProgressIncrement(key) {
     console.log(key);
     switch (key) {
       case 1:
         setProgressValue((prevValue) =>
-          Math.min(prevValue + incrementCount, 100)
+          Math.min(prevValue + incrementCount, 150)
         ); // Update state first
         localStorage.setItem("progressValue", progressValue + 1);
         console.log("working");
         break;
       case 2:
         setProgressValue2((prevValue) =>
-          Math.min(prevValue + incrementCount, 100)
+          Math.min(prevValue + incrementCount, 150)
         ); // Update state first
         localStorage.setItem("progressValue2", progressValue2 + 1);
         break;
       case 3:
         setProgressValue3((prevValue) =>
-          Math.min(prevValue + incrementCount, 100)
+          Math.min(prevValue + incrementCount, 150)
         ); // Update state first
         localStorage.setItem("progressValue3", progressValue3 + 1);
         break;
       case 4:
         setProgressValue4((prevValue) =>
-          Math.min(prevValue + incrementCount, 100)
+          Math.min(prevValue + incrementCount, 150)
         ); // Update state first
         localStorage.setItem("progressValue4", progressValue4 + 1);
         break;
       case 5:
         setProgressValue5((prevValue) =>
-          Math.min(prevValue + incrementCount, 100)
+          Math.min(prevValue + incrementCount, 150)
         ); // Update state first
         localStorage.setItem("progressValue5", progressValue5 + 1);
         break;
@@ -104,7 +109,7 @@ const Progress = () => {
             >
               <div
                 className="progress"
-                style={{ width: `${progressValue}%` }}
+                style={{ width: `${progressValue / 1.5}%` }}
               ></div>
             </div>
             <p>{progressValue}</p>
@@ -119,7 +124,7 @@ const Progress = () => {
             >
               <div
                 className="progress"
-                style={{ width: `${progressValue2}%` }}
+                style={{ width: `${progressValue2 / 1.5}%` }}
               ></div>
             </div>
             <p>{progressValue2}</p>
@@ -134,7 +139,7 @@ const Progress = () => {
             >
               <div
                 className="progress"
-                style={{ width: `${progressValue3}%` }}
+                style={{ width: `${progressValue3 / 1.5}%` }}
               ></div>
             </div>
             <p>{progressValue3}</p>
@@ -149,7 +154,7 @@ const Progress = () => {
             >
               <div
                 className="progress"
-                style={{ width: `${progressValue4}%` }}
+                style={{ width: `${progressValue4 / 1.5}%` }}
               ></div>
             </div>
             <p>{progressValue4}</p>
@@ -164,7 +169,7 @@ const Progress = () => {
             >
               <div
                 className="progress"
-                style={{ width: `${progressValue5}%` }}
+                style={{ width: `${progressValue5 / 1.5}%` }}
               ></div>
             </div>
             <p>{progressValue5}</p>
