@@ -14,17 +14,35 @@ const Progress = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  function getData(value) {
+    return parseInt(localStorage.getItem(value));
+  }
+  function Erase() {
+    localStorage.setItem("progressValue", 0);
+    setProgressValue(0);
+    localStorage.setItem("progressValue2", 0);
+    setProgressValue2(0);
+    localStorage.setItem("progressValue3", 0);
+    setProgressValue3(0);
+    localStorage.setItem("progressValue4", 0);
+    setProgressValue4(0);
+    localStorage.setItem("progressValue5", 0);
+    setProgressValue5(0);
+  }
   const [progressValue, setProgressValue] = useState(
-    parseInt(localStorage.getItem("progressValue")) || 0
+    getData("progressValue") || 0
   );
   const [progressValue2, setProgressValue2] = useState(
-    parseInt(localStorage.getItem("progressValue2")) || 0
+    getData("progressValue2") || 0
   );
   const [progressValue3, setProgressValue3] = useState(
-    parseInt(localStorage.getItem("progressValue3")) || 0
+    getData("progressValue3") || 0
   );
   const [progressValue4, setProgressValue4] = useState(
-    parseInt(localStorage.getItem("progressValue4")) || 0
+    getData("progressValue4") || 0
+  );
+  const [progressValue5, setProgressValue5] = useState(
+    getData("progressValue5") || 0
   );
 
   let incrementCount = 1;
@@ -39,6 +57,7 @@ const Progress = () => {
           Math.min(prevValue + incrementCount, 100)
         ); // Update state first
         localStorage.setItem("progressValue", progressValue + 1);
+        console.log("working");
         break;
       case 2:
         setProgressValue2((prevValue) =>
@@ -57,6 +76,12 @@ const Progress = () => {
           Math.min(prevValue + incrementCount, 100)
         ); // Update state first
         localStorage.setItem("progressValue4", progressValue4 + 1);
+        break;
+      case 5:
+        setProgressValue5((prevValue) =>
+          Math.min(prevValue + incrementCount, 100)
+        ); // Update state first
+        localStorage.setItem("progressValue5", progressValue5 + 1);
         break;
       default:
         console.log("Default");
@@ -129,19 +154,28 @@ const Progress = () => {
             </div>
             <p>{progressValue4}</p>
           </div>
+          <div id="progress2">
+            <p>Experience</p>
+            <div
+              className="progress-bar"
+              onClick={() => {
+                handleProgressIncrement(5);
+              }}
+            >
+              <div
+                className="progress"
+                style={{ width: `${progressValue5}%` }}
+              ></div>
+            </div>
+            <p>{progressValue5}</p>
+          </div>
+
           <button
             className="cool-button"
             onClick={() => {
               let confirmation = confirm("This will erase your progress!.");
               if (confirmation) {
-                localStorage.setItem("progressValue", 0);
-                setProgressValue(0);
-                localStorage.setItem("progressValue2", 0);
-                setProgressValue2(0);
-                localStorage.setItem("progressValue3", 0);
-                setProgressValue3(0);
-                localStorage.setItem("progressValue4", 0);
-                setProgressValue4(0);
+                Erase();
               }
             }}
           >
